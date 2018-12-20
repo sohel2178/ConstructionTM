@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="@dimen/large_padding"
+    tools:context=".ui.main.profile.ProfileFragment">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:id="@+id/iv_profile"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_profile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/small_padding"
+        android:textSize="18sp"
+        android:id="@+id/name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/small_padding"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        android:id="@+id/email"/>
+
+    <ScrollView
+        android:layout_marginTop="@dimen/medium_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/email"
+        android:paddingBottom="@dimen/default_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:focusableInTouchMode="true">
+
+            <RelativeLayout
+                android:layout_margin="@dimen/medium_padding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/company_info_container"
+                android:layout_marginBottom="@dimen/small_padding">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="#cccccc"
+                    android:id="@+id/one">
+
+                    <EditText
+                        android:id="@+id/et_company_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prompt_company_name"
+                        android:theme="@style/TIStyle"
+                        android:inputType="textEmailAddress" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/one"
+                    android:textColorHint="#cccccc"
+                    android:id="@+id/two">
+
+                    <EditText
+                        android:theme="@style/TIStyle"
+                        android:id="@+id/et_company_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prompt_company_desc"
+                        android:inputType="textEmailAddress" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:id="@+id/image_container"
+                android:padding="@dimen/medium_padding"
+                android:background="@drawable/rect_back">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/company_logo"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/rect_back"
+                    />
+                <TextView
+                    android:layout_width="72dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/company_logo"
+                    android:text="@string/logo"
+                    android:gravity="center"
+                    android:padding="@dimen/small_padding"/>
+
+                <Button
+                    android:id="@+id/btn_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/rect_ripple"
+                    android:textColor="@color/white"
+                    android:drawableLeft="@drawable/select"
+                    android:text="@string/select"/>
+
+            </RelativeLayout>
+
+            <Button
+                android:layout_marginTop="@dimen/default_margin"
+                android:id="@+id/btn_upload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rect_ripple"
+                android:text="@string/submit"
+                android:textColor="@color/white"
+                android:paddingBottom="@dimen/small_padding"
+                android:paddingTop="@dimen/small_padding"
+                android:layout_gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+</RelativeLayout>

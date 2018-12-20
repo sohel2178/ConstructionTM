@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_back"
+    android:clickable="true"
+    android:focusable="true">
+
+    <TextView
+        android:id="@+id/item"
+        style="@style/dailyTransactionStyle"
+        android:layout_weight="2"
+        android:layout_gravity="center_vertical"
+        android:text="@string/item" />
+
+    <TextView
+        android:layout_gravity="center_vertical"
+        android:id="@+id/received"
+        style="@style/dailyTransactionStyle"
+        android:textSize="@dimen/normal_text_size"
+        android:text="@string/received" />
+
+    <TextView
+        android:layout_gravity="center_vertical"
+        android:id="@+id/consumed"
+        style="@style/dailyTransactionStyle"
+        android:textSize="@dimen/normal_text_size"
+        android:text="@string/consumed" />
+
+    <TextView
+        android:layout_gravity="center_vertical"
+        android:id="@+id/balance"
+        style="@style/dailyTransactionStyle"
+        android:textSize="@dimen/normal_text_size"
+        android:text="@string/balance" />
+
+
+</TableRow>
+

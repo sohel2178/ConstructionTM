@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/very_small_padding"
+    app:cardElevation="@dimen/very_small_padding"
+    android:layout_marginTop="@dimen/small_padding"
+    android:layout_marginBottom="@dimen/very_small_padding"
+    android:layout_marginStart="@dimen/default_margin"
+    android:layout_marginEnd="@dimen/default_margin"
+    app:cardBackgroundColor="@color/cardview_light_background">
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/small_padding"
+        android:focusable="true"
+        android:clickable="true"
+        android:background="@drawable/item_back"
+
+        >
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="@dimen/small_padding"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Dummy Project Name"/>
+
+        <View
+            android:layout_marginTop="@dimen/very_small_padding"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#cccccc"/>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/medium_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/small_padding">
+
+            <ImageView
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:src="@drawable/project"
+                android:padding="@dimen/small_padding"
+                android:tint="@color/colorPrimaryDark"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/default_margin">
+
+                <TextView
+                    android:layout_marginTop="@dimen/very_small_padding"
+                    android:id="@+id/tv_description"
+                    android:text="Multi-storied Building"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-condensed"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/very_small_padding"
+                    android:id="@+id/tv_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Located At Dhanmondi, Dhaka"
+                    android:fontFamily="sans-serif-condensed" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#cccccc"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:id="@+id/hide_container">
+
+            <ImageView
+                android:layout_width="@dimen/project_icon_size"
+                android:layout_height="@dimen/project_icon_size"
+                android:layout_centerVertical="true"
+                android:src="@drawable/left_arrow"
+                android:tint="@color/colorAccent"
+                android:id="@+id/ic_action"
+                android:layout_marginStart="@dimen/default_margin"/>
+
+
+
+            <LinearLayout
+                android:id="@+id/action_container"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="@dimen/small_padding"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true">
+
+                <ImageView
+                    android:id="@+id/view_project"
+                    app:srcCompat="@drawable/eye"
+                    style="@style/ProjectIcon" />
+
+
+
+                <ImageView
+                    android:id="@+id/edit"
+                    app:srcCompat="@drawable/edit"
+                    style="@style/ProjectIcon"/>
+
+                <ImageView
+                    android:id="@+id/delete"
+                    style="@style/ProjectIcon"
+                    app:srcCompat="@drawable/delete"
+                    />
+
+                <ImageView
+                    android:id="@+id/share"
+                    app:srcCompat="@drawable/share"
+                    style="@style/ProjectIcon"/>
+
+                <ImageView
+                    android:id="@+id/user"
+                    app:srcCompat="@drawable/user"
+                    android:layout_marginEnd="0dp"
+                    style="@style/ProjectIcon"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pseudo_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:padding="@dimen/small_padding">
+
+                <TextView
+                    android:layout_marginStart="@dimen/medium_padding"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Actions"
+                    android:id="@+id/txt_action"
+                    android:gravity="center_vertical"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"/>
+
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>
+
+

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/white"
+    android:layout_margin="@dimen/default_margin"
+    app:cardElevation="@dimen/medium_padding">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:padding="@dimen/default_margin"
+            style="@style/TaskTitle"
+            android:id="@+id/title"
+            android:text="@string/task_entry_form"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:drawableStart="@drawable/form"
+            android:gravity="center"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_margin"
+            android:layout_below="@+id/title">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/ti_task_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_task_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_task_name"
+                    android:inputType="text"
+                    android:paddingStart="@dimen/default_margin"
+                    android:theme="@style/TIStyle" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/ti_task_vol_of_work"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ti_task_name">
+
+                <EditText
+                    android:id="@+id/et_task_vol_of_work"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_volume_of_works"
+                    android:inputType="numberDecimal"
+                    android:paddingStart="@dimen/default_margin"
+                    android:theme="@style/TIStyle" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/ti_unit_rate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ti_task_vol_of_work">
+
+                <EditText
+                    android:id="@+id/et_unit_rate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/unit_rate"
+                    android:inputType="numberDecimal"
+                    android:paddingStart="@dimen/default_margin"
+                    android:theme="@style/TIStyle" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/ti_unit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ti_unit_rate">
+
+                <AutoCompleteTextView
+                    android:id="@+id/unit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/unit"
+                    android:inputType="text"
+                    android:paddingStart="@dimen/default_margin"
+                    android:theme="@style/TIStyle" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/ti_start_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ti_unit">
+
+                <EditText
+                    android:id="@+id/et_start_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/start_date"
+                    android:inputType="text"
+                    android:focusable="false"
+                    android:paddingStart="@dimen/default_margin"
+                    android:theme="@style/TIStyle" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/ti_finished_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ti_start_date">
+
+                <EditText
+                    android:id="@+id/et_finished_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/finished_date"
+                    android:inputType="text"
+                    android:focusable="false"
+                    android:paddingStart="@dimen/default_margin"
+                    android:theme="@style/TIStyle" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/ti_finished_date"
+                android:text="@string/add_task"
+                android:id="@+id/btn_add"
+                style="@style/MyButton" />
+
+           <!-- <com.linearbd.sitemanager.CustomView.MyEditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_height"
+                android:id="@+id/et_task_name"
+                android:hint="@string/enter_task_name"/>-->
+
+            <!--<com.linearbd.sitemanager.CustomView.MyEditText
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_height"
+                android:id="@+id/et_task_vol_of_work"
+                android:layout_below="@+id/et_task_name"
+                android:inputType="numberDecimal"
+                android:hint="@string/enter_volume_of_works"/>-->
+
+
+           <!-- <com.linearbd.sitemanager.CustomView.MyEditText
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_height"
+                android:id="@+id/et_unit_rate"
+                android:layout_below="@+id/et_task_vol_of_work"
+                android:inputType="numberDecimal"
+                android:hint="@string/unit_rate"/>-->
+
+            <!--<com.linearbd.sitemanager.CustomView.MyAutoCompleteTextView
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_height"
+                android:layout_below="@+id/et_unit_rate"
+                android:hint="@string/unit"
+                android:id="@+id/unit"/>-->
+
+            <!--<RelativeLayout
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/start_date_container"
+                android:layout_below="@+id/unit">
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/iv_start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    app:elevation="@dimen/medium_padding"
+                    app:fabSize="normal"
+                    app:srcCompat="@drawable/calendar_black" />
+
+                <com.linearbd.sitemanager.CustomView.MyEditText
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_text_height"
+                    android:id="@+id/et_start_date"
+                    android:layout_toStartOf="@+id/iv_start_date"
+                    android:inputType="numberDecimal"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:focusable="false"
+                    android:layout_centerVertical="true"
+                    android:hint="@string/start_date"/>
+
+            </RelativeLayout>-->
+
+
+           <!-- <RelativeLayout
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/start_date_container"
+                android:id="@+id/finished_date_container">
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/iv_finished_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    app:elevation="@dimen/medium_padding"
+                    app:fabSize="normal"
+                    app:srcCompat="@drawable/calendar_black" />
+
+                <com.linearbd.sitemanager.CustomView.MyEditText
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_text_height"
+                    android:id="@+id/et_finished_date"
+                    android:layout_toStartOf="@+id/iv_finished_date"
+                    android:inputType="numberDecimal"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:focusable="false"
+                    android:layout_centerVertical="true"
+                    android:hint="@string/finished_date"/>
+
+            </RelativeLayout>-->
+
+
+
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
+

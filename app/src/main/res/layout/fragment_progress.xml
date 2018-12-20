@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/medium_padding"
+    tools:context=".ui.taskDetail.progress.ProgressFragment">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/table_header_back"
+        android:text="@string/workdone_vs_time"
+        android:textSize="18sp"
+        android:padding="@dimen/small_padding"
+        android:textColor="@color/white"
+        android:gravity="center"/>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minHeight="@dimen/chart_min_height"
+        android:id="@+id/line_chart"
+        android:padding="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:paddingBottom="@dimen/large_padding"/>
+
+</LinearLayout>

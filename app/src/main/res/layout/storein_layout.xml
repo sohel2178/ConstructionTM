@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/medium_padding">
+
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="@dimen/medium_padding">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:padding="@dimen/medium_padding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TaskTitle"
+                android:text="@string/store_received_entry"
+                android:gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:drawableStart="@drawable/form"
+                android:background="@color/orange"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/default_margin">
+
+                <com.linearbd.sitemanager.CustomView.MyAutoCompleteTextView
+                    style="@style/MyEditTextStyle"
+                    android:id="@+id/item_name"
+                    android:hint="@string/item_name"/>
+
+                <TextView
+                    android:paddingStart="@dimen/medium_padding"
+                    android:layout_marginTop="@dimen/medium_padding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_supplier"
+                    style="@style/TaskTitle"
+                    android:textSize="14sp"/>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_text_height"
+                    android:background="@drawable/edit_text_background_deselect">
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/edit_text_height"
+                        style="@android:style/Widget.Spinner.DropDown"
+                        android:spinnerMode="dropdown"
+                        android:background="@null"
+                        android:popupBackground="@color/light_grey"
+                        android:id="@+id/sp_supplier">
+
+                    </android.support.v7.widget.AppCompatSpinner>
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/large_padding"
+                        android:tint="@color/dark_grey"
+                        android:src="@android:drawable/arrow_down_float" />
+
+
+                </RelativeLayout>
+
+
+
+
+
+
+                <com.linearbd.sitemanager.CustomView.MyEditText
+                    style="@style/MyEditTextStyle"
+                    android:id="@+id/chalan_no"
+                    android:hint="@string/chalan_no"/>
+
+                <com.linearbd.sitemanager.CustomView.MyEditText
+                    style="@style/MyEditTextStyle"
+                    android:id="@+id/mrr_no"
+                    android:hint="@string/mrrNo"/>
+
+                <com.linearbd.sitemanager.CustomView.MyEditText
+                    style="@style/MyEditTextStyle"
+                    android:id="@+id/quantity"
+                    android:inputType="numberDecimal"
+                    android:hint="@string/enter_quantity" />
+
+                <com.linearbd.sitemanager.CustomView.MyAutoCompleteTextView
+                    style="@style/MyEditTextStyle"
+                    android:id="@+id/unit"
+                    android:hint="@string/unit"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_padding">
+
+                    <com.linearbd.sitemanager.CustomView.MyEditText
+                        style="@style/MyEditTextStyle"
+                        android:id="@+id/store_in_date"
+                        android:focusable="false"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/medium_padding"
+                        android:layout_toStartOf="@+id/date_picker"
+                        android:hint="@string/select_date"/>
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/date_picker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        app:elevation="@dimen/medium_padding"
+                        app:fabSize="normal"
+                        app:srcCompat="@drawable/calendar_black" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rect_back"
+                    android:layout_marginTop="@dimen/default_margin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/TaskTitle"
+                        android:text="@string/challan_image"
+                        android:background="@color/orange"
+                        android:textColor="@color/white"
+                        android:padding="@dimen/medium_padding"
+                        android:gravity="center_horizontal"
+                        android:drawableStart="@drawable/select"
+                        android:id="@+id/img_txt"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:layout_below="@+id/img_txt">
+
+                        <ImageView
+                            android:contentDescription="@string/challan_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scaleType="fitXY"
+                            android:id="@+id/chalan_image" />
+
+                        <Button
+                            android:id="@+id/upload"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/add_image"
+                            android:textColor="@color/white"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="@dimen/medium_padding"
+                            android:layout_marginEnd="@dimen/medium_padding"
+                            android:background="@drawable/rect_ripple"
+                            android:drawableStart="@drawable/select"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+                <Button
+                    android:id="@+id/add_store"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/rect_ripple"
+                    android:textColor="@color/white"
+                    android:text="@string/add_to_store"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

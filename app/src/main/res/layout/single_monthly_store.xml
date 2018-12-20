@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableRow
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:text="@string/date"
+        android:id="@+id/date"
+        style="@style/TableItem"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:layout_weight="2"
+        android:text="@string/item"
+        android:id="@+id/item"
+        style="@style/TableItem"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:text="@string/received"
+        android:id="@+id/received"
+        style="@style/TableItem"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/consumed"
+        android:text="@string/consumed"
+        style="@style/TableItem"
+        android:textColor="@android:color/black"/>
+
+
+
+</TableRow>
+

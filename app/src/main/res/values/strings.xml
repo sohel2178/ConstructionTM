@@ -1,0 +1,298 @@
+<resources>
+    <string name="app_name">Tasks Manager</string>
+
+    <!--Original-->
+   <!-- <string name="ad_unit_id">ca-app-pub-5474497946967422/8916710227</string>
+    <string name="ad_app_id">ca-app-pub-5474497946967422~5203985489</string>
+    <string name="ad_unit_id_inters">ca-app-pub-5474497946967422/5139572152</string>-->
+
+    <!--Test Add-->
+    <string name="ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="ad_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="ad_unit_id_inters">ca-app-pub-3940256099942544/1033173712</string>
+
+    <string name="facebook_app_id">751400055046983</string>
+    <string name="fb_login_protocol_scheme">fb128892581247029</string>
+
+    <string name="channel_name">Alert Channel</string>
+    <string name="channel_description">Give Alart When Applied Change</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+
+    <string name="location">Location</string>
+
+
+    <string name="loading">Loading...Please Wait</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+    <string name="sort_ascending">Sort Ascending</string>
+    <string name="sort_descending">Sort Descending</string>
+    <string name="clear_sorting">Clear</string>
+    <string name="hiding_row_sample">Hiding 3. Row Sample</string>
+    <string name="showing_row_sample">Showing 3. Row Sample</string>
+    <string name="scroll_to_column_position">Scroll to 15. column position</string>
+    <string name="scroll_to_row_position">Scroll to 5. row position</string>
+    <string name="show_hide_the_column">Showing / Hiding 1. column</string>
+    <string name="table_pagination_details">Page </string>
+
+
+    <!--Navigation Drawer Constant-->
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="company_info_title">Update Company Info</string>
+    <string name="prompt_company_name">Enter Company Name</string>
+    <string name="prompt_company_desc">Company Short Description</string>
+    <string name="company_logo"><u>Company Logo</u></string>
+    <string name="company_info"><u>Company Info</u></string>
+    <string name="update">update</string>
+    <string name="name">Name</string>
+    <string name="progress">Progress</string>
+    <string name="volume_of_works_done">Volume Of Works Done</string>
+    <string name="volume_of_works">Volume Of Works</string>
+    <string name="duration">Duration</string>
+    <string name="enter_work_done">Enter Work Done</string>
+    <string name="add">add</string>
+    <string name="short_desc">Short Description</string>
+    <string name="purpose">Purpose</string>
+    <string name="tranaction_date">Transaction Date</string>
+    <string name="inserted_by">Inserted By</string>
+    <string name="date">Date</string>
+    <string name="description">Description</string>
+
+    <string name="task_desc">To Create,Edit,Delete and Manage All Tasks in this Project <b><u>Click Here...</u></b></string>
+    <string name="finance_desc">To Create,Edit,Delete and Manage All Financial Transaction in this Project <b><u>Click Here...</u></b></string>
+    <string name="store_desc">To Create,Edit,Delete and Manage All Store Transaction and Suppliers in this Project <b><u>Click Here...</u></b></string>
+    <string name="employee_desc">To Create,Edit,Delete All Employee in this Project <b><u>Click Here...</u></b></string>
+
+
+    <string name="finance_report">Finance Report</string>
+    <string name="select_year">Select Year</string>
+    <string name="select_month">Select Month</string>
+    <string name="total">Total</string>
+    <string name="summery_table">Summery Table</string>
+    <string name="employee_name">EMPLOYEE NAME</string>
+    <string name="designation">Designation</string>
+    <string name="colon">:</string>
+    <string name="father_name">Father Name</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="nid">NID</string>
+    <string name="gender">Gender</string>
+    <string name="address">Address</string>
+    <string name="transaction_summery">Transaction Summery</string>
+    <string name="item_1">Summery</string>
+    <string name="item_2">Monthly Tr..</string>
+    <string name="item_3">All Transaction</string>
+    <string name="daily_transaction">Daily Transaction</string>
+    <string name="monthly_transaction">Monthly Transaction</string>
+    <string name="work_done">Work Done</string>
+    <string name="work_done_chart">Work Done Chart</string>
+    <string name="last_15_transaction"><b>LAST 15 TRANSACTION</b></string>
+    <string name="mrrNo">Material Registry No (Optional)</string>
+    <string name="mrrNoText">Material Registry No</string>
+    <string name="challan_no">Challan No</string>
+    <string name="received_from">Received From</string>
+    <string name="quantity">Quantity</string>
+    <string name="issue_to">Issue To</string>
+    <string name="used_in">Used In</string>
+    <string name="last_15_entry">Last 15 Entry</string>
+    <string name="item_name">Item Name</string>
+    <string name="select_date">Select Date</string>
+    <string name="save">Save</string>
+    <string name="unit">Unit</string>
+    <string name="store_summery">Store Summery</string>
+    <string name="item">Item</string>
+    <string name="received">Received</string>
+    <string name="consumed">Consumed</string>
+    <string name="balance">Balance</string>
+    <string name="no_image_found">No Image Found</string>
+    <string name="enter_project_name">Enter Project Name</string>
+    <string name="enter_project_location">Enter Project Location</string>
+    <string name="enter_project_description">Enter Project Description</string>
+    <string name="select_start_date">Select Start Date</string>
+    <string name="select_completion_date">Select Completion Date</string>
+    <string name="image_section">Image Section</string>
+    <string name="add_project">Add Project</string>
+    <string name="add_image">Add Image</string>
+    <string name="add_to_store">Add To Store</string>
+    <string name="challan_image">Challan Image</string>
+    <string name="receive_from">Receive From</string>
+    <string name="chalan_no">Invoice No</string>
+    <string name="mrr_no">MRR No</string>
+    <string name="enter_quantity">Enter Quantity</string>
+    <string name="account_entry_form">Account Entry Form</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_designation">Enter Designation</string>
+    <string name="enter_father_name">Enter Father Name</string>
+    <string name="enter_contact_no">Enter Contact No</string>
+    <string name="enter_national_id_number">Enter National ID Number</string>
+    <string name="select_date_of_birth">Select Date of Birth</string>
+    <string name="select_gender">Select Gender</string>
+    <string name="employee_image">Employee Image</string>
+    <string name="upload">Upload</string>
+    <string name="add_employee">Add Employee</string>
+    <string name="task_entry_form">Task Entry Form</string>
+    <string name="enter_task_name">Enter Task Name</string>
+    <string name="enter_volume_of_works">Enter Volume of Works</string>
+    <string name="unit_rate">Unit Rate</string>
+    <string name="start_date">Start Date</string>
+    <string name="finished_date">Finished Date</string>
+    <string name="add_task">Add Task</string>
+    <string name="transaction_entry_form">Transaction Entry Form</string>
+    <string name="transaction_date">Transaction Date</string>
+    <string name="from_account">From Account</string>
+    <string name="to_account">To Account</string>
+    <string name="upload_images_optional">Upload Images(Optional)</string>
+    <string name="ledgre_section">Ledgre</string>
+    <string name="select_account">Select Account</string>
+    <string name="select">browse</string>
+    <string name="login">login</string>
+    <string name="select_user">Select User</string>
+    <string name="search_by_user_email">Search User By Email</string>
+    <string name="activity">Activity</string>
+    <string name="has_write_permission">Has Write Permission</string>
+    <string name="finance">Finance</string>
+    <string name="store">Store</string>
+    <string name="employee">Employee</string>
+    <string name="share">share</string>
+    <string name="permission">Permission</string>
+    <string name="project_image">Project Image</string>
+    <string name="project_owner">Project Owner</string>
+    <string name="user">User</string>
+    <string name="submit">Submit</string>
+    <string name="employee_entry_form">Employee Entry Form</string>
+    <string name="select_image">Select Image</string>
+    <string name="store_received_entry">Store Received Entry Form</string>
+    <string name="store_item_consumption_form">Store Consumption Form</string>
+    <string name="chart">Chart</string>
+    <string name="voucher_no">Voucher No</string>
+    <string name="table_view">Table View</string>
+    <string name="chart_view">Chart View</string>
+    <string name="supplier_entry_form">Supplier Entry Form</string>
+    <string name="supplier_name">Suppler Name</string>
+    <string name="material_supply">Material Supply</string>
+    <string name="revenue">Revenue</string>
+    <string name="expenses">Expenses</string>
+    <string name="all">All</string>
+    <string name="summery">Summery</string>
+    <string name="suppliers">Suppliers</string>
+    <string name="select_supplier">Select Supplier</string>
+    <string name="engineering_support">Engineering Support</string>
+    <string name="all_task_title">ALL</string>
+    <string name="today_task_title">TODAY</string>
+    <string name="expired_task_title">EXPIRED</string>
+    <string name="running_task_title">ACTIVE</string>
+    <string name="add_new_employee">Add New Employee</string>
+    <string name="complete_task_title">Complete</string>
+    <string name="_details">Details</string>
+    <string name="update_info">Update Info</string>
+    <string name="create_new_project">Create New Project</string>
+    <string name="project_creator">Project Creator</string>
+    <string name="about_us">About Me</string>
+    <string name="view_nproject">View\nProject</string>
+    <string name="view_ndelete">Delete\nProject</string>
+    <string name="account">Account</string>
+    <string name="trial_balance"><b>Trial Balance</b></string>
+    <string name="store_in">Store In</string>
+    <string name="store_out">Store Out</string>
+    <string name="report">Report</string>
+    <string name="store_reports">Store Reports</string>
+    <string name="finance_summery">Finance Summery</string>
+    <string name="all_transaction">All Transaction</string>
+    <string name="b_ca_d">Balance C/D on Debit</string>
+    <string name="b_ca_c">Balance C/D on Credit</string>
+    <string name="add_new_transaction">Add New Transaction</string>
+    <string name="create_new_supplier">Create New Supplier</string>
+    <string name="received_on">Received On </string>
+    <string name="supplied_by">Supplied By</string>
+    <string name="consumed_on">Consumed On </string>
+    <string name="update_project">Update Project</string>
+    <string name="project_update_form">Project Update Form</string>
+    <string name="update_from_nav">Update Profile</string>
+    <string name="tasks">Tasks</string>
+    <string name="stores">Store Keeping</string>
+    <string name="employees">Employees</string>
+    <string name="add_new_task">Add New Task</string>
+    <string name="task_update_form">Task Update Form</string>
+    <string name="update_task">Update Task</string>
+    <string name="cash_account_name">Cash</string>
+    <string name="reports">Reports</string>
+    <string name="transaction">Transaction</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="transaction_on_date">Transaction On Date</string>
+
+    <string name="search_user_by_email">Search User by Email</string>
+    <string name="shared_user_list">Shared User List</string>
+    <string name="gantt_chart">Gantt Chart</string>
+    <string name="create_new_task">Create New Task</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
+    <string name="log_out">Logout</string>
+    <string name="choose_language">Choose Language</string>
+    <string name="radio_english">English</string>
+    <string name="radio_bangla">Bangla</string>
+    <string name="my_project">My\nProject</string>
+    <string name="share_project">Shared\nProject</string>
+    <string name="shared_project_list">Shared Project List</string>
+    <string name="project_list">Project List</string>
+    <string name="logo">Logo</string>
+    <string name="project_entry_form">Project Entry Form</string>
+    <string name="workdone_vs_time">Workdone Vs Time</string>
+    <string name="undefined">Undefined</string>
+
+
+    <string-array name="year_list">
+        <item>2018</item>
+        <item>2019</item>
+        <item>2020</item>
+        <item>2021</item>
+        <item>2022</item>
+        <item>2023</item>
+        <item>2024</item>
+        <item>2025</item>
+        <item>2026</item>
+        <item>2027</item>
+        <item>2028</item>
+        <item>2029</item>
+        <item>2030</item>
+    </string-array>
+
+    <string-array name="month_list">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="title_arr">
+        <item>@string/tasks</item>
+        <item>@string/finance</item>
+        <item>@string/store</item>
+        <item>@string/employees</item>
+    </string-array>
+
+    <string-array name="content_arr">
+        <item>Click To View, Create, Edit, Delete and Manage Tasks</item>
+        <item>Click To View, Create, Edit, Delete and Manage Financial Transaction</item>
+        <item>Click To View, Create, Edit, Delete and Manage Store Transaction</item>
+        <item>Click To View, Create, Edit, Delete All Employee in this Project</item>
+    </string-array>
+
+</resources>

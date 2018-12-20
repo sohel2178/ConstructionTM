@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_all"
+        android:icon="@drawable/task"
+        android:title="@string/all_task_title"/>
+    <item
+        android:id="@+id/action_today"
+        android:icon="@drawable/task"
+        android:title="@string/today_task_title"/>
+
+    <item
+        android:id="@+id/action_running"
+        android:icon="@drawable/task"
+        android:title="@string/running_task_title"/>
+
+    <item
+        android:id="@+id/action_complete"
+        android:icon="@drawable/task"
+        android:title="@string/complete_task_title"/>
+
+    <item
+        android:id="@+id/action_expired"
+        android:icon="@drawable/task"
+        android:title="@string/expired_task_title"/>
+
+</menu>

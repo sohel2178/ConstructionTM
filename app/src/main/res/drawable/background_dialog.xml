@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- From: support/v7/appcompat/res/drawable/abc_dialog_material_background_light.xml -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:insetLeft="@dimen/medium_padding"
+    android:insetTop="@dimen/medium_padding"
+    android:insetRight="@dimen/medium_padding"
+    android:insetBottom="@dimen/medium_padding">
+
+    <shape android:shape="rectangle">
+        <corners android:radius="10dp" />
+        <solid android:color="#cc555555" />
+        <stroke android:width="2dp" android:color="@color/colorPrimaryDark" />
+    </shape>
+</inset>

@@ -1,0 +1,120 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.forbitbd.constructiontm"
+        minSdkVersion 17
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    aaptOptions {
+        cruncherEnabled = false
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("D:\\Sohel\\KEYSTORE\\ConstructionTaskManager\\constructionTaskManager.jks")
+            storePassword "s0201078"
+            keyAlias "android_key"
+            keyPassword "s0201078"
+        }
+    }
+
+    buildTypes {
+
+        debug {
+            minifyEnabled false
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+        google()
+        jcenter()
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:$support_version"
+    implementation "com.android.support:animated-vector-drawable:$support_version"
+    implementation "com.android.support:exifinterface:$support_version"
+    implementation "com.android.support:cardview-v7:$support_version"
+    implementation "com.android.support:customtabs:$support_version"
+    implementation "com.android.support:design:$support_version"
+    implementation "com.android.support:support-v4:$support_version"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    implementation "com.google.firebase:firebase-auth:$google_version"
+    implementation "com.google.firebase:firebase-database:$google_version"
+    implementation "com.google.firebase:firebase-storage:$google_version"
+    implementation "com.google.firebase:firebase-messaging:$google_version"
+    implementation "com.google.firebase:firebase-ads:$google_version"
+    implementation "com.google.android.gms:play-services-auth:$google_version"
+    implementation 'com.firebaseui:firebase-ui-database:2.3.0'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation 'pub.devrel:easypermissions:0.4.2'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.5.1' // Image Cropper Library
+    implementation 'com.github.chenupt.android:springindicator:1.0.2@aar'
+    implementation 'com.firebaseui:firebase-ui-database:2.3.0'
+    implementation 'com.applandeo:material-calendar-view:1.4.0' // Material CalenDar
+    //compile 'com.nightonke:boommenu:2.1.1' // Boom Button
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3' // MP Android Chart
+    implementation 'com.github.clans:fab:1.6.4' // Fab Menu Button
+    implementation 'com.github.lzyzsd:circleprogress:1.2.1' // Circle Progress Library
+    implementation 'com.github.medyo:android-about-page:1.2.4' // About Us Page Library
+
+    // Arch
+    implementation "android.arch.lifecycle:runtime:$arch_version"
+    implementation "android.arch.lifecycle:extensions:$arch_version"
+    annotationProcessor "android.arch.lifecycle:compiler:$arch_version"
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+
+    // RxAndroid
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+    //compile 'com.github.traex.rippleeffect:library:1.3'     //Ripple Effect Library
+    implementation 'com.evrencoskun.library:tableview:0.8.8'
+
+    implementation 'com.android.support:multidex:1.0.3'
+}
+
+apply plugin: 'com.google.gms.google-services'

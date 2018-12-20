@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="250dp"
+    android:orientation="vertical"
+    tools:context="com.linearbd.sitemanager.Fragments.Project.store.monthly.ChartFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="@style/TaskTitle"
+            android:background="@color/colorPrimary"
+            android:text="@string/received"
+            android:padding="@dimen/medium_padding"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:drawableStart="@drawable/chart"
+            android:id="@+id/received"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="@style/TaskTitle"
+            android:background="@color/colorPrimary"
+            android:text="@string/consumed"
+            android:padding="@dimen/medium_padding"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:drawableStart="@drawable/chart"
+            android:id="@+id/consumed"
+            />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minHeight="200dp"
+        android:id="@+id/chart_container">
+
+    </FrameLayout>
+
+</LinearLayout>

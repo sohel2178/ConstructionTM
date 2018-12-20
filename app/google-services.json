@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "851644405741",
+    "firebase_url": "https://constructiontm-3fbf0.firebaseio.com",
+    "project_id": "constructiontm-3fbf0",
+    "storage_bucket": "constructiontm-3fbf0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:851644405741:android:e8d8a7f30371dfde",
+        "android_client_info": {
+          "package_name": "com.forbitbd.constructiontm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "851644405741-c6m42ncli1uk5a95qkuopvm3acv5524b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.forbitbd.constructiontm",
+            "certificate_hash": "991ba318b04097e9bcc1ad0d5dea4fbe6a8d3894"
+          }
+        },
+        {
+          "client_id": "851644405741-ub9o6kliovq5mtceu765731a92pjvj62.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8oo2g_qPor7R_w9bj4c09EvHkY34exrQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "851644405741-ub9o6kliovq5mtceu765731a92pjvj62.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
