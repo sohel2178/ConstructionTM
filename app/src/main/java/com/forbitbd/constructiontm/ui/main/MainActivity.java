@@ -7,6 +7,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 
 import com.forbitbd.constructiontm.R;
+import com.forbitbd.constructiontm.ui.main.rateUs.RateUsFragment;
 import com.forbitbd.constructiontm.utility.AdUtil;
 import com.forbitbd.constructiontm.utility.BaseActivity;
 import com.forbitbd.constructiontm.utility.MyUtil;
@@ -104,4 +105,16 @@ public class MainActivity extends BaseActivity implements MainContract.View{
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        showRateUsForm();
+    }
+
+    private void showRateUsForm(){
+        RateUsFragment rateUsFragment = new RateUsFragment();
+        rateUsFragment.setCancelable(false);
+
+        rateUsFragment.show(getSupportFragmentManager(),"RRR");
+    }
 }

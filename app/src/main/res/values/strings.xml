@@ -2,7 +2,7 @@
     <string name="app_name">Tasks Manager</string>
 
     <!--Original-->
-   <!-- <string name="ad_unit_id">ca-app-pub-5474497946967422/8916710227</string>
+    <!-- <string name="ad_unit_id">ca-app-pub-5474497946967422/8916710227</string>
     <string name="ad_app_id">ca-app-pub-5474497946967422~5203985489</string>
     <string name="ad_unit_id_inters">ca-app-pub-5474497946967422/5139572152</string>-->
 
@@ -294,5 +294,9 @@
         <item>Click To View, Create, Edit, Delete and Manage Store Transaction</item>
         <item>Click To View, Create, Edit, Delete All Employee in this Project</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rate_us_txt">If You like it, Please Rate it. If you do not like it rate it. It will help us grow</string>
 
 </resources>

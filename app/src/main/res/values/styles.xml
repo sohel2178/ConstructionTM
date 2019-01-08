@@ -272,6 +272,10 @@
         <item name="android:fontFamily">sans-serif-condensed</item>
     </style>
 
+    <style name="MyDialog" parent="CustomDialogTheme">
+        <item name="android:windowBackground">@drawable/my_dialog</item>
+    </style>
+
 
 
 </resources>
