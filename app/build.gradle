@@ -96,6 +96,7 @@ dependencies {
     implementation 'com.github.clans:fab:1.6.4' // Fab Menu Button
     implementation 'com.github.lzyzsd:circleprogress:1.2.1' // Circle Progress Library
     implementation 'com.github.medyo:android-about-page:1.2.4' // About Us Page Library
+    implementation 'com.ramotion.foldingcell:folding-cell:1.2.2'
 
     // Arch
     implementation "android.arch.lifecycle:runtime:$arch_version"

@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -56,8 +57,7 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
 
     private TaskAdapter adapter;
 
-    private FragmentLoadListener listener;
-    int fragnumber;
+    //int fragnumber;
     //private ProjectPermission mProjectPermission;
 
 
@@ -88,30 +88,31 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
         mPresenter = new TaskPagerPresenter(this);
         mPresenter.setupAd();
 
-        fragnumber = getArguments().getInt(Constant.FRAG_NO);
-        permission = (ProjectPermission) getArguments().getSerializable(Constant.PROJECT_PERMISSION);
-
-        if(this.getParentFragment() instanceof ActivityFragment){
-            ActivityFragment af = (ActivityFragment) getParentFragment();
-            listener=af;
-        }
+        //fragnumber = getArguments().getInt(Constant.FRAG_NO);
+        //permission = (ProjectPermission) getArguments().getSerializable(Constant.PROJECT_PERMISSION);
 
         if(getActivity() instanceof ProjectActivity){
-            ProjectActivity taskActivity = (ProjectActivity) getActivity();
-            adapter = new TaskAdapter(getContext(),taskActivity.getProjectPermission(),this);
+            ProjectActivity pa = (ProjectActivity) getActivity();
+            permission = pa.getProjectPermission();
+            adapter = new TaskAdapter(getContext(),pa.getProjectPermission(),this);
         }
-
 
 
     }
 
+    public void clearAdapter(){
+        adapter.clear();
+    }
 
+    public void addTask(Task task){
+        adapter.addTask(task);
+    }
 
     @Override
     public void onResume() {
         super.onResume();
         ((ViewGroup) getView().findViewById(R.id.root)).removeView(touchInterceptor);
-        listener.onLoad(fragnumber);
+        //listener.onLoad(fragnumber);
     }
 
     @Override
@@ -135,12 +136,12 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
     private void initView(View view) {
         rvTask = view.findViewById(R.id.rv_task);
         rvTask.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvTask.setNestedScrollingEnabled(false);
+        //rvTask.setNestedScrollingEnabled(false);
         rvTask.setAdapter(adapter);
     }
 
     public void update(List<Task> taskList){
-        mPresenter.startFiltering(taskList,fragnumber);
+       // mPresenter.startFiltering(taskList,fragnumber);
     }
 
 
