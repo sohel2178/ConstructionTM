@@ -2,8 +2,10 @@
 <resources>
     <color name="colorPrimary">#E64A19</color>
     <color name="colorPrimaryDark">#BF360C</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ffc107</color>
     <color name="color_blank">#424242</color>
+
+    <color name="black">@android:color/black</color>
 
 
     <color name="text_light">@android:color/white</color>

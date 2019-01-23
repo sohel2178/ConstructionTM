@@ -15,6 +15,7 @@ import com.forbitbd.constructiontm.R;
 import com.forbitbd.constructiontm.utility.MyUtil;
 import com.forbitbd.constructiontm.model.ProjectPermission;
 import com.forbitbd.constructiontm.model.Task;
+import com.ramotion.foldingcell.FoldingCell;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -51,29 +52,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
 
         Task task = taskList.get(position);
 
-        holder.tvName.setText(task.getTask_name());
-        holder.tvStartDate.setText(MyUtil.getStringDate(new Date(task.getTask_start_date())));
-        holder.tvCompletionDate.setText(MyUtil.getStringDate(new Date(task.getTask_finished_date())));
-        holder.tvDuration.setText(String.valueOf(MyUtil.getDuration(task.getTask_finished_date(),task.getTask_start_date())).concat(" Days"));
+        holder.bind(task);
 
 
-        double pro = task.getTask_volume_of_work_done()/task.getTask_volume_of_works()*100;
-
-        DecimalFormat df = new DecimalFormat("#.##");
-        holder.tvProgress.setText(df.format(pro).concat(" %"));
-
-        holder.tvVolumeofWorks.setText(df.format(task.getTask_volume_of_works())
-                .concat(" ").concat(task.getUnit()));
-        holder.getTvVolumeofWorkDone.setText(df.format(task.getTask_volume_of_work_done())
-                .concat(" ").concat(task.getUnit()));
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            holder.mProgressBar.setProgress((int)(task.getTask_volume_of_work_done()/task.getTask_volume_of_works()*100),true);
-        }else{
-            holder.mProgressBar.setProgress((int)(task.getTask_volume_of_work_done()/task.getTask_volume_of_works()*100));
-        }
-
-        if(permission!=null){
+        /*if(permission!=null){
             holder.ivEdit.setVisibility(View.GONE);
             holder.ivDelete.setVisibility(View.GONE);
 
@@ -82,7 +64,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             }else{
                 holder.ivAdd.setVisibility(View.VISIBLE);
             }
-        }
+        }*/
 
     }
 
@@ -132,27 +114,35 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
 
     class TaskHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView tvName,tvStartDate,tvCompletionDate,tvDuration,tvProgress,tvVolumeofWorks,getTvVolumeofWorkDone;
+        private FoldingCell mFoldingCell;
+
+        TextView tvName,tvNameTwo,tvStartDate,tvFinishedDate,tvDuration,tvProgress,tvVolumeofWorks,getTvVolumeofWorkDone;
         private ProgressBar mProgressBar;
 
-        ImageView ivDelete,ivAdd,ivEdit,ivView;
-
-        private RelativeLayout rlHide;
+        //ImageView ivDelete,ivAdd,ivEdit,ivView;
 
         public TaskHolder(View itemView) {
             super(itemView);
 
-            tvName = itemView.findViewById(R.id.name);
-            tvStartDate = itemView.findViewById(R.id.start_date);
-            tvCompletionDate = itemView.findViewById(R.id.completion_date);
-            tvDuration = itemView.findViewById(R.id.duration);
-            tvProgress = itemView.findViewById(R.id.progress);
-            tvVolumeofWorks = itemView.findViewById(R.id.vol_of_works);
-            getTvVolumeofWorkDone = itemView.findViewById(R.id.vol_of_works_done);
-            mProgressBar = itemView.findViewById(R.id.progress_bar);
-            rlHide = itemView.findViewById(R.id.hide_container);
+            mFoldingCell = itemView.findViewById(R.id.folding_cell);
 
-            ivDelete = itemView.findViewById(R.id.delete);
+            tvName = itemView.findViewById(R.id.name);
+            tvNameTwo = itemView.findViewById(R.id.name_two);
+            mProgressBar = itemView.findViewById(R.id.progressBar);
+
+            tvProgress = itemView.findViewById(R.id.progress);
+            tvStartDate = itemView.findViewById(R.id.start_date);
+            tvFinishedDate = itemView.findViewById(R.id.finished_date);
+            tvDuration = itemView.findViewById(R.id.duration);
+
+            tvVolumeofWorks = itemView.findViewById(R.id.vol_of_works);
+            getTvVolumeofWorkDone = itemView.findViewById(R.id.vol_of_work_done);
+
+            mFoldingCell.setOnClickListener(this);
+
+            //rlHide = itemView.findViewById(R.id.hide_container);
+
+            /*ivDelete = itemView.findViewById(R.id.delete);
             ivAdd = itemView.findViewById(R.id.fab_add);
             ivEdit = itemView.findViewById(R.id.edit);
             ivView = itemView.findViewById(R.id.view_project);
@@ -161,7 +151,36 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             ivDelete.setOnClickListener(this);
             ivAdd.setOnClickListener(this);
             ivEdit.setOnClickListener(this);
-            ivView.setOnClickListener(this);
+            ivView.setOnClickListener(this);*/
+
+        }
+
+        public void bind(Task task){
+            tvName.setText(task.getTask_name());
+            tvNameTwo.setText(task.getTask_name());
+            tvStartDate.setText(MyUtil.getStringDate(new Date(task.getTask_start_date())));
+            tvFinishedDate.setText(MyUtil.getStringDate(new Date(task.getTask_finished_date())));
+            tvDuration.setText(String.valueOf(MyUtil.getDuration(task.getTask_finished_date(),task.getTask_start_date())).concat(" Days"));
+
+            double pro = task.getTask_volume_of_work_done()/task.getTask_volume_of_works()*100;
+
+            DecimalFormat df = new DecimalFormat("#.##");
+            tvProgress.setText(df.format(pro).concat(" %"));
+
+            tvVolumeofWorks.setText(df.format(task.getTask_volume_of_works())
+                    .concat(" ").concat(task.getUnit()));
+            getTvVolumeofWorkDone.setText(df.format(task.getTask_volume_of_work_done())
+                    .concat(" ").concat(task.getUnit()));
+
+            mProgressBar.setProgress((int)(task.getTask_volume_of_work_done()/task.getTask_volume_of_works()*100));
+            mProgressBar.setSecondaryProgress(100);
+            mProgressBar.setMax(100);
+
+            /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                mProgressBar.setProgress((int)(task.getTask_volume_of_work_done()/task.getTask_volume_of_works()*100),true);
+            }else{
+
+            }*/
 
         }
 
@@ -169,7 +188,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         @Override
         public void onClick(View view) {
 
-            if(view==itemView){
+            if(view==mFoldingCell){
+                mFoldingCell.toggle(false);
+            }
+
+            /*if(view==itemView){
                 if(view.getTag()==null){
                     rlHide.setVisibility(View.VISIBLE);
                     view.setTag("Hell");
@@ -187,7 +210,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
                 listener.onDeleteClick(taskList.get(getAdapterPosition()));
             }else if(view ==ivView){
                 listener.onItemClick(taskList.get(getAdapterPosition()));
-            }
+            }*/
 
         }
     }

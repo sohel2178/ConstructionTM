@@ -25,18 +25,18 @@
             android:id="@+id/cell_content_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorAccent"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+
                 android:padding="@dimen/medium_padding"
                 android:text="Task Name"
                 android:id="@+id/name_two"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/large_text_size" />
 
 
@@ -61,6 +61,9 @@
                             android:layout_width="75dp"
                             android:layout_height="75dp"
                             android:id="@+id/progressBar"
+                            android:indeterminate="false"
+                            android:secondaryProgress="100"
+                            android:background="@drawable/progress_circle"
                             android:layout_gravity="center"/>
 
                         <TextView
@@ -84,39 +87,25 @@
                     android:padding="@dimen/small_padding">
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/small_padding"
-                        android:textColor="@color/white"
-                        android:text="@string/start_date" />
+                        android:text="@string/start_date"
+                        style="@style/TasDetailTextStyle" />
 
                     <TextView
-                        android:textColor="@color/white"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/small_padding"
-                        android:text="@string/finished_date" />
+                        android:text="@string/finished_date"
+                        style="@style/TasDetailTextStyle" />
 
                     <TextView
-                        android:textColor="@color/white"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/small_padding"
-                        android:text="@string/duration" />
+                        android:text="@string/duration"
+                        style="@style/TasDetailTextStyle" />
 
                     <TextView
-                        android:textColor="@color/white"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/small_padding"
-                        android:text="@string/volume_of_works" />
+                        android:text="@string/volume_of_works"
+                        style="@style/TasDetailTextStyle" />
 
                     <TextView
-                        android:textColor="@color/white"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/small_padding"
-                        android:text="@string/volume_of_works_done" />
+                        android:text="@string/volume_of_works_done"
+                        style="@style/TasDetailTextStyle" />
+
 
 
                 </LinearLayout>
@@ -130,10 +119,11 @@
 
                     <TextView
                         android:gravity="end"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/small_padding"
+                        android:id="@+id/start_date"
                         android:text="@string/start_date" />
 
                     <TextView
@@ -142,6 +132,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/small_padding"
+                        android:id="@+id/finished_date"
                         android:text="@string/finished_date" />
 
                     <TextView
@@ -150,6 +141,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/small_padding"
+                        android:id="@+id/duration"
                         android:text="@string/duration" />
 
                     <TextView
@@ -158,6 +150,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/small_padding"
+                        android:id="@+id/vol_of_works"
                         android:text="@string/volume_of_works" />
 
                     <TextView
@@ -166,6 +159,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/small_padding"
+                        android:id="@+id/vol_of_work_done"
                         android:text="@string/volume_of_works_done" />
 
 
@@ -293,7 +287,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/small_padding"
-            android:visibility="gone"
             android:orientation="horizontal">
 
             <ImageView
