@@ -103,6 +103,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         notifyItemInserted(position);
     }
 
+   /* public void addTaskInPosition(Task task,int position){
+        this.taskList.add(position,task);
+        notifyItemInserted(position);
+    }*/
+
     public void setData(List<Task> taskList){
         clear();
         this.taskList = taskList;

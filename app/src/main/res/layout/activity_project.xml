@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
-    xmlns:folding-cell="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -34,158 +33,7 @@
                 />
 
 
-            <com.ramotion.foldingcell.FoldingCell
 
-                android:id="@+id/folding_cell"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                folding-cell:animationDuration="500"
-                folding-cell:backSideColor="@color/light_grey"
-                folding-cell:cameraHeight="30"
-                folding-cell:additionalFlipsCount="0"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:background="@color/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways|snap">
-
-                <LinearLayout
-                    android:id="@+id/cell_content_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="@dimen/medium_padding"
-                    android:background="@android:color/white"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:textSize="@dimen/large_text_size"
-                        android:padding="@dimen/small_padding"
-                        android:text="Project Info"/>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="@color/light_grey"
-                        android:layout_marginStart="@dimen/default_margin"
-                        android:layout_marginEnd="@dimen/default_margin"/>
-
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="@dimen/large_padding"
-                        android:background="@color/white">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="3"
-                                android:padding="@dimen/small_padding"
-                                android:text="Project Location"
-                                />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="4"
-                                android:padding="@dimen/small_padding"
-                                android:id="@+id/project_location"
-                                />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="3"
-                                android:padding="@dimen/small_padding"
-                                android:text="Project Description"
-                                />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="4"
-                                android:padding="@dimen/small_padding"
-                                android:id="@+id/project_desc"
-                                />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="3"
-                                android:padding="@dimen/small_padding"
-                                android:text="Physical Progress"
-                                />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="4"
-                                android:padding="@dimen/small_padding"
-                                android:id="@+id/physical_progress"
-                                />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="3"
-                                android:padding="@dimen/small_padding"
-                                android:text="Financial Progress"
-                                />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="4"
-                                android:padding="@dimen/small_padding"
-                                android:id="@+id/financial_progress"
-                                />
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
-
-
-                </LinearLayout>
-                ​
-                <LinearLayout
-                    android:id="@+id/cell_title_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/medium_padding"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:textSize="@dimen/large_text_size"
-                        android:text="Project Info"
-                        android:textColor="@android:color/white"/>
-
-                </LinearLayout>
-                ​
-            </com.ramotion.foldingcell.FoldingCell>
             ​
 
             <android.support.design.widget.TabLayout
@@ -206,6 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:minHeight="220dp"
+            android:background="@color/colorPrimary"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             />
 

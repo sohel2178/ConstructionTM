@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.DatePicker;
@@ -162,6 +163,11 @@ public class AddTaskActivity extends PrebaseActivity implements View.OnClickList
                 boolean valid = mPresenter.validate(task,startDateTime,finishedDateTime,volOfWork,unitRate);
 
                 if(!valid){
+                    return;
+                }
+
+                if(!isOnline()){
+                    Toast.makeText(this, "Please Turn on Your internet connection", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

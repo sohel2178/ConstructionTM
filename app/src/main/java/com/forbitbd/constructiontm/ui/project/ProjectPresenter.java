@@ -12,6 +12,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -116,6 +118,58 @@ public class ProjectPresenter implements ProjectContract.Presenter {
                         mView.addItem(task,position);
                     }
                 });
+    }
+
+
+    @Override
+    public void calculateProgress(List<Task> taskList) {
+        double totalWorkdone=0;
+        double workTobeDone =0;
+        double ph=0;
+
+        for(Task task:taskList){
+            workTobeDone = workTobeDone+task.getTask_volume_of_works()*task.getTask_unit_rate();
+            totalWorkdone = totalWorkdone+task.getTask_volume_of_work_done()*task.getTask_unit_rate();
+            ph = ph+(task.getTask_volume_of_work_done()/task.getTask_volume_of_works());
+        }
+
+        double financialProgress = totalWorkdone/workTobeDone*100;
+        double physicalProgress = ph/taskList.size()*100;
+
+        mView.updateProgress(financialProgress,physicalProgress,taskList.size());
+    }
+
+    @Override
+    public void sortTaskListByStartDate(List<Task> taskList, Task task) {
+        taskList.add(task);
+        Collections.sort(taskList, new Comparator<Task>() {
+            @Override
+            public int compare(Task t1, Task t2) {
+                return (int) (t1.getTask_start_date()-t2.getTask_start_date());
+            }
+        });
+        mView.updateSortedList(taskList);
+
+    }
+
+    @Override
+    public void getRemoverdPosition(List<Task> taskList, Task task) {
+        for (Task x: taskList){
+            if(x.getTask_id().equals(task.getTask_id())){
+                mView.removeTask(taskList.indexOf(x));
+                break;
+            }
+        }
+    }
+
+    @Override
+    public void getUpdatePosition(List<Task> taskList, Task task) {
+        for (Task x: taskList){
+            if(x.getTask_id().equals(task.getTask_id())){
+                mView.updateTask(task,taskList.indexOf(x));
+                break;
+            }
+        }
     }
 
 

@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -21,22 +20,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.forbitbd.constructiontm.R;
+import com.forbitbd.constructiontm.model.Project;
 import com.forbitbd.constructiontm.utility.Constant;
 import com.forbitbd.constructiontm.dialogFragment.AddWorkDoneFragment;
 import com.forbitbd.constructiontm.dialogFragment.WorkDoneAmountListener;
 import com.forbitbd.constructiontm.model.ProjectPermission;
 import com.forbitbd.constructiontm.model.Task;
 import com.forbitbd.constructiontm.ui.project.ProjectActivity;
-import com.forbitbd.constructiontm.ui.project.task.ActivityFragment;
 import com.forbitbd.constructiontm.ui.taskDetail.TaskDetailActivity;
-import com.forbitbd.constructiontm.ui.taskUpdate.UpdateTaskActivity;
 import com.forbitbd.constructiontm.ui.util.AdFragment;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.Date;
 import java.util.List;
@@ -67,11 +66,16 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
 
     private TaskPagerPresenter mPresenter;
 
-    private FrameLayout touchInterceptor;
-
     private ProjectPermission permission;
+    private Project project;
+
+    private ProjectActivity activity;
 
     private int counter;
+
+
+    private TextView tvProjectLocation,tvProjectDescription,tvPhysicalProgress,tvFinancialProgress,tvTaskCount;
+    private FoldingCell mFoldingCell;
 
 
     public TaskPagerFragment() {
@@ -82,9 +86,6 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        touchInterceptor = new FrameLayout(getContext());
-        touchInterceptor.setClickable(true);
-
         mPresenter = new TaskPagerPresenter(this);
         mPresenter.setupAd();
 
@@ -92,27 +93,23 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
         //permission = (ProjectPermission) getArguments().getSerializable(Constant.PROJECT_PERMISSION);
 
         if(getActivity() instanceof ProjectActivity){
-            ProjectActivity pa = (ProjectActivity) getActivity();
-            permission = pa.getProjectPermission();
-            adapter = new TaskAdapter(getContext(),pa.getProjectPermission(),this);
+            activity = (ProjectActivity) getActivity();
+            permission = activity.getProjectPermission();
+            project = activity.getProject();
+            adapter = new TaskAdapter(getContext(),activity.getProjectPermission(),this);
         }
 
 
     }
 
     public void clearAdapter(){
-        adapter.clear();
+        if(adapter!=null){
+            adapter.clear();
+        }
     }
 
     public void addTask(Task task){
         adapter.addTask(task);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        ((ViewGroup) getView().findViewById(R.id.root)).removeView(touchInterceptor);
-        //listener.onLoad(fragnumber);
     }
 
     @Override
@@ -124,24 +121,51 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
         return view;
     }
 
-    @Override
-    public void onPause() {
-        if (touchInterceptor.getParent() == null) {
-            ((ViewGroup) getView().findViewById(R.id.root)).addView(touchInterceptor);
-        }
-        super.onPause();
-    }
 
 
     private void initView(View view) {
+
+        mFoldingCell = view.findViewById(R.id.folding_cell);
+
+        mFoldingCell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFoldingCell.toggle(false);
+            }
+        });
+
+
+        tvProjectLocation = view.findViewById(R.id.project_location);
+        tvProjectDescription = view.findViewById(R.id.project_desc);
+        tvPhysicalProgress = view.findViewById(R.id.physical_progress);
+        tvFinancialProgress = view.findViewById(R.id.financial_progress);
+        tvTaskCount = view.findViewById(R.id.task_count);
+
+        tvProjectLocation.setText(project.getProject_location());
+        tvProjectDescription.setText(project.getProject_description());
+
+
         rvTask = view.findViewById(R.id.rv_task);
         rvTask.setLayoutManager(new LinearLayoutManager(getContext()));
         //rvTask.setNestedScrollingEnabled(false);
         rvTask.setAdapter(adapter);
     }
 
-    public void update(List<Task> taskList){
-       // mPresenter.startFiltering(taskList,fragnumber);
+
+
+    public void updateUI(double fp, double pp,int taskCount){
+        if(tvFinancialProgress!=null){
+            tvFinancialProgress.setText(String.format("%.2f",fp)+" %");
+        }
+
+        if(tvPhysicalProgress!=null){
+            tvPhysicalProgress.setText(String.format("%.2f",pp)+" %");
+        }
+
+        if(tvTaskCount!=null){
+            tvTaskCount.setText(String.valueOf(taskCount));
+        }
+        
     }
 
 
@@ -153,10 +177,8 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
 
         counter++;
 
-
-
         startTaskDetailActivity();
-        //showAd();
+
     }
 
 
@@ -177,12 +199,6 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
         }else{
             mPresenter.showWorkDoneDialog(task);
         }
-
-      /*  if(getmInterstitialAd().isLoaded()){
-            showAd();
-        }else{
-            mPresenter.showWorkDoneDialog();
-        }*/
 
     }
 
@@ -266,38 +282,24 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
 
     @Override
     public void startEditTask() {
-        Intent intent = new Intent(getContext(), UpdateTaskActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(Constant.TASK,selectedTask);
-        intent.putExtras(bundle);
-        startActivityForResult(intent,REQUEST_CODE);
+        activity.startUpdateTask(selectedTask);
     }
 
-    @Override
+   /* @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode==REQUEST_CODE && resultCode==ProjectActivity.RESULT_OK){
             Task task = (Task) data.getSerializableExtra(Constant.TASK);
+            Log.d("UUUUU",task.getTask_name());
+            activity.updateTask(task);
 
-            if(getParentFragment() instanceof ActivityFragment && task!=null){
-                ActivityFragment af = (ActivityFragment) getParentFragment();
-                af.updateTask(task);
-            }
         }
-    }
+    }*/
 
     @Override
     public void deleteComplete() {
-        if(getActivity() instanceof ProjectActivity){
-            ProjectActivity pa = (ProjectActivity) getActivity();
-            pa.hideProgressDialog();
-        }
+        activity.hideProgressDialog();
+        activity.deleteTask(selectedTask);
         Toast.makeText(getContext(), "Task Remove Successfully", Toast.LENGTH_SHORT).show();
-        //adapter.removeTask(selectedTask);
-
-        if(getParentFragment() instanceof ActivityFragment){
-            ActivityFragment af = (ActivityFragment) getParentFragment();
-            af.deleteTask(selectedTask);
-        }
     }
 
     @Override
@@ -380,22 +382,16 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
             }
         });
 
-        df.show(getActivity().getFragmentManager(),"ADD_WORKDONE_FRAGMENT");
+        df.show(getActivity().getSupportFragmentManager(),"ADD_WORKDONE_FRAGMENT");
     }
 
     @Override
     public void hideDialogAndUpdateItem(double amount) {
-        if(getActivity() instanceof ProjectActivity){
-            ProjectActivity pa = (ProjectActivity) getActivity();
-            pa.hideProgressDialog();
-        }
+        activity.hideProgressDialog();
         selectedTask.setTask_volume_of_work_done(selectedTask.getTask_volume_of_work_done()+amount);
-        //adapter.updateItem(selectedTask.getTask_id(),(selectedTask.getTask_volume_of_work_done()+amount));
 
-        if(getParentFragment() instanceof ActivityFragment){
-            ActivityFragment af = (ActivityFragment) getParentFragment();
-            af.updateTask(selectedTask);
-        }
+        activity.requestToUpdateTask(selectedTask);
+        //adapter.updateItem(selectedTask.getTask_id(),(selectedTask.getTask_volume_of_work_done()+amount));
     }
 
     @Override

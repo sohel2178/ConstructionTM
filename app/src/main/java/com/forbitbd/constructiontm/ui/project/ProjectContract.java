@@ -14,6 +14,12 @@ public interface ProjectContract {
         void getAllTask(String projectId);
         void startAddTaskActivity();
         void filterData(List<Task> taskList,int position);
+
+        void calculateProgress(List<Task> taskList);
+
+        void sortTaskListByStartDate(List<Task> taskList,Task task);
+        void getRemoverdPosition(List<Task> taskList,Task task);
+        void getUpdatePosition(List<Task> taskList,Task task);
     }
 
     interface View{
@@ -22,8 +28,13 @@ public interface ProjectContract {
 
         void clearAdapter(int position);
         void addItem(Task task,int position);
+        void updateSortedList(List<Task> taskList);
 
         void startAddTaskActivity();
         void initializeViewPager(List<Task> taskList);
+
+        void updateProgress(double fp, double pp,int taskCount);
+        void removeTask(int position);
+        void updateTask(Task task ,int position);
     }
 }

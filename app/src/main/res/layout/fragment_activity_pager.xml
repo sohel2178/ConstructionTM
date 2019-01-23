@@ -1,17 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:folding-cell="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/medium_padding"
-    android:id="@+id/root"
-    tools:context=".ui.task.task.taskpager.TaskPagerFragment">
+    android:orientation="vertical"
+    android:padding="@dimen/medium_padding">
 
-   <android.support.v7.widget.RecyclerView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:id="@+id/rv_task">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/small_padding"
+        app:cardElevation="@dimen/small_padding">
 
-   </android.support.v7.widget.RecyclerView>
+        <com.ramotion.foldingcell.FoldingCell
+            android:id="@+id/folding_cell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            folding-cell:additionalFlipsCount="0"
+            folding-cell:animationDuration="500"
+            folding-cell:backSideColor="@color/light_grey"
+            folding-cell:cameraHeight="30">
 
-</FrameLayout>
+            <LinearLayout
+                android:id="@+id/cell_content_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/indicator_4"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="@dimen/medium_padding"
+                    android:text="Overview"
+                    android:textSize="@dimen/large_text_size" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="@dimen/large_padding">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/small_padding"
+                            android:text="Project Location" />
+
+                        <TextView
+                            android:id="@+id/project_location"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:padding="@dimen/small_padding" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/small_padding"
+                            android:text="Project Description" />
+
+                        <TextView
+                            android:id="@+id/project_desc"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:padding="@dimen/small_padding" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/small_padding"
+                            android:text="Task Count" />
+
+                        <TextView
+                            android:id="@+id/task_count"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:padding="@dimen/small_padding" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/small_padding"
+                            android:text="Physical Progress" />
+
+                        <TextView
+                            android:id="@+id/physical_progress"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:padding="@dimen/small_padding" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/small_padding"
+                            android:text="Financial Progress" />
+
+                        <TextView
+                            android:id="@+id/financial_progress"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:padding="@dimen/small_padding" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+            ​
+
+            <LinearLayout
+                android:id="@+id/cell_title_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Overview"
+                    android:padding="@dimen/medium_padding"
+                    android:textSize="@dimen/large_text_size" />
+
+            </LinearLayout>
+            ​
+        </com.ramotion.foldingcell.FoldingCell>
+
+    </android.support.v7.widget.CardView>
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="@dimen/medium_padding"
+        android:id="@+id/rv_task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="220dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
