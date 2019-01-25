@@ -53,7 +53,7 @@
                 android:layout_height="86dp"
                 android:src="@drawable/project"
                 android:padding="@dimen/small_padding"
-                android:tint="@color/colorPrimaryDark"/>
+                android:tint="@color/colorAccent"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -101,7 +101,6 @@
                 android:tint="@color/colorAccent"
                 android:id="@+id/ic_action"
                 android:layout_marginStart="@dimen/default_margin"/>
-
 
 
             <LinearLayout

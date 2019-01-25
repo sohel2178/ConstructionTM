@@ -19,9 +19,9 @@
                 style="@style/TaskTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
+                android:background="@color/colorAccent"
                 android:drawableStart="@drawable/form"
-                android:gravity="center_horizontal"
+                android:drawablePadding="@dimen/default_margin"
                 android:padding="@dimen/medium_padding"
                 android:text="@string/project_entry_form"
                 android:textColor="@color/white" />

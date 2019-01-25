@@ -28,7 +28,7 @@ public class ProgressPresenter implements ProgressContract.Presenter {
 
             List<ChartModel> chartModelList = new ArrayList<>();
 
-            for (int i=0;i<MyUtil.getDuration(lastDate,firstDate);i++){
+            for (int i=0;i<MyUtil.getDuration(lastDate,firstDate)+1;i++){
                 if(i==0){
                     ChartModel chartModel = new ChartModel(firstDate);
                     chartModelList.add(chartModel);

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.forbitbd.constructiontm.R;
+import com.forbitbd.constructiontm.ui.taskDetail.BaseDetailFragment;
 import com.forbitbd.constructiontm.utility.MyUtil;
 import com.forbitbd.constructiontm.model.WorkDone;
 import com.forbitbd.constructiontm.ui.util.DateAxisFormatter;
@@ -31,11 +32,11 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProgressFragment extends Fragment implements ProgressContract.View {
+public class ProgressFragment extends BaseDetailFragment implements ProgressContract.View {
     private LineChart mLineChart;
 
     private ProgressPresenter mPresenter;
-    private double volOfWorks;
+    //private double volOfWorks;
 
 
     public ProgressFragment() {
@@ -60,18 +61,21 @@ public class ProgressFragment extends Fragment implements ProgressContract.View 
 
     private void initView(View view) {
         mLineChart = view.findViewById(R.id.line_chart);
+        mPresenter.processList(getWorkdoneList());
     }
 
     public void update(List<WorkDone> workDoneList, double volofWorks){
-        this.volOfWorks= volofWorks;
+        //this.volOfWorks= volofWorks;
         Log.d("HHHH",volofWorks+"");
-        mPresenter.processList(workDoneList);
+
     }
 
     @Override
     public void updateChart(List<ChartModel> chartModelList) {
 
-        Log.d("KKKKKK",volOfWorks+"");
+        Log.d("HHHH",chartModelList.size()+"");
+
+        //Log.d("KKKKKK",volOfWorks+"");
         mLineChart.getDescription().setEnabled(false);
         mLineChart.setPinchZoom(true);
         // mBarChart.setOnChartValueSelectedListener(this);
@@ -108,9 +112,9 @@ public class ProgressFragment extends Fragment implements ProgressContract.View 
         leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
         leftAxis.setSpaceTop(15f);
         leftAxis.setAxisMinimum(0f);
-        leftAxis.setAxisMaximum((float) (volOfWorks+100));
+        leftAxis.setAxisMaximum((float) (getVolumeofWorks()+100));
 
-        LimitLine ll = new LimitLine((float) volOfWorks, "Work Done Limit");
+        LimitLine ll = new LimitLine((float) getVolumeofWorks(), "Work Done Limit");
         ll.setLineColor(Color.GREEN);
         ll.setLineWidth(4f);
         ll.setTextColor(Color.BLACK);

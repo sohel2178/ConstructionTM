@@ -16,7 +16,6 @@ import android.support.v7.widget.RecyclerView;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +52,7 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
     private static final int REQUEST_CODE=10000;
 
     private RecyclerView rvTask;
+    private LinearLayoutManager manager;
 
     private TaskAdapter adapter;
 
@@ -146,7 +146,8 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
 
 
         rvTask = view.findViewById(R.id.rv_task);
-        rvTask.setLayoutManager(new LinearLayoutManager(getContext()));
+        manager = new LinearLayoutManager(getContext());
+        rvTask.setLayoutManager(manager);
         //rvTask.setNestedScrollingEnabled(false);
         rvTask.setAdapter(adapter);
     }
@@ -175,9 +176,15 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
         this.action=VIEW_CLICK;
         this.selectedTask = task;
 
+        if(getmInterstitialAd().isLoaded()){
+            showAd();
+        }else{
+            mPresenter.callViewToStartTaskDetailActivity();
+        }
+
         counter++;
 
-        startTaskDetailActivity();
+        //startTaskDetailActivity();
 
     }
 
@@ -189,8 +196,14 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
 
         counter++;
 
+        if(getmInterstitialAd().isLoaded()){
+            showAd();
+        }else{
+            mPresenter.showWorkDoneDialog(task);
+        }
 
-        if(counter%3==0){
+
+       /* if(counter%3==0){
             if(getmInterstitialAd().isLoaded()){
                 showAd();
             }else{
@@ -198,7 +211,7 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
             }
         }else{
             mPresenter.showWorkDoneDialog(task);
-        }
+        }*/
 
     }
 
@@ -209,7 +222,13 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
 
         counter++;
 
-        if(counter%3==0){
+        if(getmInterstitialAd().isLoaded()){
+            showAd();
+        }else{
+            mPresenter.callViewToEditTask();
+        }
+
+      /*  if(counter%3==0){
             if(getmInterstitialAd().isLoaded()){
                 showAd();
             }else{
@@ -217,7 +236,7 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
             }
         }else{
             mPresenter.callViewToEditTask();
-        }
+        }*/
 
     }
 
@@ -238,6 +257,17 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
             mPresenter.callViewShowDialog();
         }
 
+    }
+
+    public void unfoldItem(int position){
+      if(rvTask.findViewHolderForLayoutPosition(position) instanceof TaskAdapter.TaskHolder){
+          TaskAdapter.TaskHolder holder = (TaskAdapter.TaskHolder) rvTask.findViewHolderForLayoutPosition(position);
+
+          holder.mFoldingCell.unfold(true);
+         if(!holder.mFoldingCell.isUnfolded()) {
+
+         }
+      }
     }
 
     @Override
@@ -285,15 +315,6 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
         activity.startUpdateTask(selectedTask);
     }
 
-   /* @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode==REQUEST_CODE && resultCode==ProjectActivity.RESULT_OK){
-            Task task = (Task) data.getSerializableExtra(Constant.TASK);
-            Log.d("UUUUU",task.getTask_name());
-            activity.updateTask(task);
-
-        }
-    }*/
 
     @Override
     public void deleteComplete() {
@@ -347,7 +368,6 @@ public class TaskPagerFragment extends AdFragment implements TaskClickListener ,
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Log.d("CALL","Call");
                 dialogInterface.dismiss();
                 mPresenter.deleteFromDatabase(selectedTask);
 

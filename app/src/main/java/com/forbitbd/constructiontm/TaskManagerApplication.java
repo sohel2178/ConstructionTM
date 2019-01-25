@@ -10,7 +10,7 @@ public class TaskManagerApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        FirebaseDatabase.getInstance().getReference().keepSynced(true);
+        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
+        FirebaseDatabase.getInstance().getReference().keepSynced(false);
     }
 }

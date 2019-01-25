@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.forbitbd.constructiontm.R;
+import com.forbitbd.constructiontm.ui.taskDetail.BaseDetailFragment;
 import com.forbitbd.constructiontm.utility.MyUtil;
 import com.forbitbd.constructiontm.model.WorkDone;
 import com.forbitbd.constructiontm.ui.util.DateAxisFormatter;
@@ -29,7 +30,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WorkDoneChartFragment extends Fragment implements ChartContract.View {
+public class WorkDoneChartFragment extends BaseDetailFragment implements ChartContract.View {
 
 
 
@@ -61,6 +62,7 @@ public class WorkDoneChartFragment extends Fragment implements ChartContract.Vie
 
     private void initView(View view) {
         barChart = view.findViewById(R.id.bar_chart);
+        mPresenter.processWorkDoneList(getWorkdoneList());
         //createChart();
     }
 

@@ -9,10 +9,9 @@ import java.util.List;
 public interface ProjectContract {
 
     interface Presenter{
-        void loadRightFragment(ProjectPermission projectPermission);
-
         void getAllTask(String projectId);
         void startAddTaskActivity();
+        void startGanttChartActivity();
         void filterData(List<Task> taskList,int position);
 
         void calculateProgress(List<Task> taskList);
@@ -23,7 +22,6 @@ public interface ProjectContract {
     }
 
     interface View{
-        void showErrorToast(String message);
         void loadActivityFragment();
 
         void clearAdapter(int position);
@@ -31,6 +29,7 @@ public interface ProjectContract {
         void updateSortedList(List<Task> taskList);
 
         void startAddTaskActivity();
+        void startGanttChartActivity();
         void initializeViewPager(List<Task> taskList);
 
         void updateProgress(double fp, double pp,int taskCount);

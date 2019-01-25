@@ -56,7 +56,6 @@ public class CellViewHolder extends AbstractViewHolder {
         String progressController = arr[1];
         String progress = arr[2];
 
-        Log.d("JJJJJJ",progressController);
 
         if(barController.equals("1")) {
             cell_textview.setBackground(ContextCompat.getDrawable(cell_textview.getContext(), R.drawable.gantt_back));

@@ -46,6 +46,7 @@ public class MyDatabaseRef {
         return database.getReference(PROJECT_REF);
     }
     public DatabaseReference getTaskRef(String projectId){
+        database.getReference(TASK_REF).child(projectId).keepSynced(false);
         return database.getReference(TASK_REF).child(projectId);
     }
 

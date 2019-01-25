@@ -27,14 +27,6 @@
         <item name="android:textColor">?android:textColorPrimaryInverse</item>
     </style>
 
-    <style name="MyButton">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">@dimen/default_margin</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/rect_ripple</item>
-    </style>
-
     <style name="MyCheckbox" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
         <item name="android:colorControlNormal">#ffd600</item>
         <item name="android:colorControlActivated">#0091ea</item>

@@ -19,10 +19,10 @@
             style="@style/TaskTitle"
             android:id="@+id/title"
             android:text="@string/task_entry_form"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorAccent"
             android:textColor="@color/white"
             android:drawableStart="@drawable/form"
-            android:gravity="center"/>
+            android:drawablePadding="@dimen/default_margin"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

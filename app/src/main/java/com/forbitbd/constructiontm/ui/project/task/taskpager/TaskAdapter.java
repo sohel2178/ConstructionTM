@@ -1,16 +1,15 @@
 package com.forbitbd.constructiontm.ui.project.task.taskpager;
 
 import android.content.Context;
-import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.dinuscxj.progressbar.CircleProgressBar;
 import com.forbitbd.constructiontm.R;
 import com.forbitbd.constructiontm.utility.MyUtil;
 import com.forbitbd.constructiontm.model.ProjectPermission;
@@ -45,27 +44,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         return  new TaskHolder(view);
     }
 
-
-
     @Override
     public void onBindViewHolder(TaskHolder holder, int position) {
 
         Task task = taskList.get(position);
-
         holder.bind(task);
-
-
-        /*if(permission!=null){
-            holder.ivEdit.setVisibility(View.GONE);
-            holder.ivDelete.setVisibility(View.GONE);
-
-            if(permission.getActivityWrite()==0){
-                holder.ivAdd.setVisibility(View.GONE);
-            }else{
-                holder.ivAdd.setVisibility(View.VISIBLE);
-            }
-        }*/
-
     }
 
     @Override
@@ -84,11 +67,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         int position = taskList.indexOf(task);
         notifyItemInserted(position);
     }
-
-   /* public void addTaskInPosition(Task task,int position){
-        this.taskList.add(position,task);
-        notifyItemInserted(position);
-    }*/
 
     public void setData(List<Task> taskList){
         clear();
@@ -114,12 +92,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
 
     class TaskHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        private FoldingCell mFoldingCell;
+        FoldingCell mFoldingCell;
 
-        TextView tvName,tvNameTwo,tvStartDate,tvFinishedDate,tvDuration,tvProgress,tvVolumeofWorks,getTvVolumeofWorkDone;
-        private ProgressBar mProgressBar;
+        TextView tvName,tvRemaining,tvNameTwo,tvStartDate,tvFinishedDate,tvDuration,tvVolumeofWorks,getTvVolumeofWorkDone;
+        private CircleProgressBar mProgressBar;
 
-        //ImageView ivDelete,ivAdd,ivEdit,ivView;
+        private ImageView ivIndicator;
+
+        ImageView ivDelete,ivAdd,ivEdit,ivView;
 
         public TaskHolder(View itemView) {
             super(itemView);
@@ -127,10 +107,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             mFoldingCell = itemView.findViewById(R.id.folding_cell);
 
             tvName = itemView.findViewById(R.id.name);
+            tvRemaining = itemView.findViewById(R.id.remaining);
+            ivIndicator = itemView.findViewById(R.id.indicator);
+
             tvNameTwo = itemView.findViewById(R.id.name_two);
             mProgressBar = itemView.findViewById(R.id.progressBar);
 
-            tvProgress = itemView.findViewById(R.id.progress);
+           // tvProgress = itemView.findViewById(R.id.progress);
             tvStartDate = itemView.findViewById(R.id.start_date);
             tvFinishedDate = itemView.findViewById(R.id.finished_date);
             tvDuration = itemView.findViewById(R.id.duration);
@@ -142,21 +125,21 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
 
             //rlHide = itemView.findViewById(R.id.hide_container);
 
-            /*ivDelete = itemView.findViewById(R.id.delete);
+            ivDelete = itemView.findViewById(R.id.delete);
             ivAdd = itemView.findViewById(R.id.fab_add);
             ivEdit = itemView.findViewById(R.id.edit);
             ivView = itemView.findViewById(R.id.view_project);
 
-            itemView.setOnClickListener(this);
             ivDelete.setOnClickListener(this);
             ivAdd.setOnClickListener(this);
             ivEdit.setOnClickListener(this);
-            ivView.setOnClickListener(this);*/
+            ivView.setOnClickListener(this);
 
         }
 
         public void bind(Task task){
             tvName.setText(task.getTask_name());
+
             tvNameTwo.setText(task.getTask_name());
             tvStartDate.setText(MyUtil.getStringDate(new Date(task.getTask_start_date())));
             tvFinishedDate.setText(MyUtil.getStringDate(new Date(task.getTask_finished_date())));
@@ -165,7 +148,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             double pro = task.getTask_volume_of_work_done()/task.getTask_volume_of_works()*100;
 
             DecimalFormat df = new DecimalFormat("#.##");
-            tvProgress.setText(df.format(pro).concat(" %"));
+            //tvProgress.setText(df.format(pro).concat(" %"));
 
             tvVolumeofWorks.setText(df.format(task.getTask_volume_of_works())
                     .concat(" ").concat(task.getUnit()));
@@ -173,14 +156,37 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
                     .concat(" ").concat(task.getUnit()));
 
             mProgressBar.setProgress((int)(task.getTask_volume_of_work_done()/task.getTask_volume_of_works()*100));
-            mProgressBar.setSecondaryProgress(100);
-            mProgressBar.setMax(100);
+           /* mProgressBar.setSecondaryProgress(100);
+            mProgressBar.setMax(100);*/
 
-            /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                mProgressBar.setProgress((int)(task.getTask_volume_of_work_done()/task.getTask_volume_of_works()*100),true);
-            }else{
+            switch (task.getState()){
+                case 1:
+                    ivIndicator.setColorFilter(ContextCompat.getColor(context, R.color.colorAccent), android.graphics.PorterDuff.Mode.SRC_IN);
+                    tvRemaining.setText(task.getRemainingDays()+" Days Remaining");
+                    break;
 
-            }*/
+                case 2:
+                    ivIndicator.setColorFilter(ContextCompat.getColor(context, R.color.green), android.graphics.PorterDuff.Mode.SRC_IN);
+                    tvRemaining.setText("Task Completed");
+                    break;
+
+                case 3:
+                    ivIndicator.setColorFilter(ContextCompat.getColor(context, R.color.red), android.graphics.PorterDuff.Mode.SRC_IN);
+                    tvRemaining.setText("Task Expired");
+                    break;
+            }
+
+             if(permission!=null) {
+                 ivEdit.setVisibility(View.GONE);
+                 ivDelete.setVisibility(View.GONE);
+
+                 if (permission.getActivityWrite() == 0) {
+                     ivAdd.setVisibility(View.GONE);
+                 } else {
+                     ivAdd.setVisibility(View.VISIBLE);
+                 }
+             }
+
 
         }
 
@@ -190,18 +196,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
 
             if(view==mFoldingCell){
                 mFoldingCell.toggle(false);
-            }
-
-            /*if(view==itemView){
-                if(view.getTag()==null){
-                    rlHide.setVisibility(View.VISIBLE);
-                    view.setTag("Hell");
-                }else{
-                    rlHide.setVisibility(View.GONE);
-
-                    view.setTag(null);
-                }
-                //listener.onItemClick(taskList.get(getAdapterPosition()));
             }else if(view==ivAdd){
                 listener.onAddClick(taskList.get(getAdapterPosition()));
             }else if(view==ivEdit){
@@ -210,7 +204,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
                 listener.onDeleteClick(taskList.get(getAdapterPosition()));
             }else if(view ==ivView){
                 listener.onItemClick(taskList.get(getAdapterPosition()));
-            }*/
+            }
 
         }
     }

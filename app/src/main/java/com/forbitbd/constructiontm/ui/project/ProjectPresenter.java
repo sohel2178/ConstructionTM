@@ -1,10 +1,8 @@
 package com.forbitbd.constructiontm.ui.project;
 
 
-import android.util.Log;
 
 import com.forbitbd.constructiontm.database.MyDatabaseRef;
-import com.forbitbd.constructiontm.model.ProjectPermission;
 import com.forbitbd.constructiontm.model.Task;
 import com.forbitbd.constructiontm.utility.MyUtil;
 import com.google.firebase.database.DataSnapshot;
@@ -34,23 +32,6 @@ public class ProjectPresenter implements ProjectContract.Presenter {
         this.myDatabaseRef = new MyDatabaseRef();
     }
 
-    @Override
-    public void loadRightFragment(ProjectPermission projectPermission) {
-        mView.loadActivityFragment();
-        /*if(projectPermission==null){
-            mView.loadActivityFragment();
-        }else{
-            if(projectPermission.getActivityRead()==1){
-
-            }else if(projectPermission.getFinanceRead()==1){
-                mView.loadFinanceFragment();
-            }else if(projectPermission.getStoreRead()==1){
-                mView.loadStoreFragment();
-            }else if(projectPermission.getEmployeeRead()==1){
-                mView.loadEmployeeFragment();
-            }
-        }*/
-    }
 
     @Override
     public void getAllTask(String projectId) {
@@ -77,6 +58,11 @@ public class ProjectPresenter implements ProjectContract.Presenter {
     @Override
     public void startAddTaskActivity() {
         mView.startAddTaskActivity();
+    }
+
+    @Override
+    public void startGanttChartActivity() {
+        mView.startGanttChartActivity();
     }
 
     @Override

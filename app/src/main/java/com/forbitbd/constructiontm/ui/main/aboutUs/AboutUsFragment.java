@@ -33,14 +33,11 @@ public class AboutUsFragment extends Fragment {
                 .setImage(R.drawable.profile)
                 .addGroup("Connect with us")
                 .addEmail("sohel.ahmed2178@gmail.com")
-                .addWebsite("http://techfastit.com")
+                //.addWebsite("http://techfastit.com")
                 .addYoutube("UCc8SZuryOonRdGiLi-jd07Q")
-                .addPlayStore("https://play.google.com/store/apps/details?id=com.linearbd.sitemanager")
+                .addPlayStore("https://play.google.com/store/apps/details?id="+getContext().getPackageName())
                 .create();
 
-        //aboutPage.setContentDescription();
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_about_us, container, false);
 
         return aboutPage;
     }

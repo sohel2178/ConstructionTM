@@ -29,7 +29,6 @@ public class TaskDetailActivity extends PrebaseActivity implements TaskDetailCon
     private ViewPager viewPager;
     private List<WorkDone> workDoneList;
     private ViewPagerAdapter adapter;
-    private int activeFragment;
     private TaskDetailPresenter mPresenter;
 
 
@@ -52,31 +51,7 @@ public class TaskDetailActivity extends PrebaseActivity implements TaskDetailCon
     }
 
     private void initView() {
-        viewPager = findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
 
-        tabLayout = findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
-
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                activeFragment = position;
-                updateUI();
-
-                Log.d("HHHH","Called");
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
 
        mPresenter.requestForWorkDone(task.getProject_id(),task.getTask_id());
 
@@ -103,10 +78,25 @@ public class TaskDetailActivity extends PrebaseActivity implements TaskDetailCon
     @Override
     public void updateWorkDone(List<WorkDone> workDoneList) {
         this.workDoneList = workDoneList;
-        updateUI();
+
+        viewPager = findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+        tabLayout = findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+        //updateUI();
     }
 
-    private void updateUI(){
+
+    public double getVolumeOfWorks(){
+        return task.getTask_volume_of_works();
+    }
+
+
+    public List<WorkDone> getWorkDoneList() {
+        return workDoneList;
+    }
+
+   /* private void updateUI(){
         if(activeFragment==0){
             WorkDoneTableFragment tf = (WorkDoneTableFragment) adapter.getItem(activeFragment);
             tf.setData(this.workDoneList,task.getUnit());
@@ -117,7 +107,7 @@ public class TaskDetailActivity extends PrebaseActivity implements TaskDetailCon
             ProgressFragment pf = (ProgressFragment) adapter.getItem(activeFragment);
             pf.update(this.workDoneList,task.getTask_volume_of_works());
         }
-    }
+    }*/
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();

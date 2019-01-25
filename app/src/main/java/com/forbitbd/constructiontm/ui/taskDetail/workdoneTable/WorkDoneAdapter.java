@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 
 import com.forbitbd.constructiontm.R;
+import com.forbitbd.constructiontm.model.DailyWorkdone;
 import com.forbitbd.constructiontm.utility.MyUtil;
 import com.forbitbd.constructiontm.model.WorkDone;
 
@@ -22,12 +23,12 @@ import java.util.List;
 
 public class WorkDoneAdapter extends RecyclerView.Adapter<WorkDoneAdapter.WorkDoneHolder>{
 
-    private List<WorkDone> workDoneList;
+    private List<DailyWorkdone> dailyWorkdoneList;
     private LayoutInflater inflater;
     private String unit;
 
     public WorkDoneAdapter(Context context) {
-        this.workDoneList = new ArrayList<>();
+        this.dailyWorkdoneList = new ArrayList<>();
         this.inflater = LayoutInflater.from(context);
     }
 
@@ -41,22 +42,36 @@ public class WorkDoneAdapter extends RecyclerView.Adapter<WorkDoneAdapter.WorkDo
 
     @Override
     public void onBindViewHolder(WorkDoneHolder holder, int position) {
-        WorkDone workDone = workDoneList.get(position);
+        DailyWorkdone dailyWorkdone = dailyWorkdoneList.get(position);
 
-        holder.tvDate.setText(MyUtil.getStringDate(new Date(workDone.getDate())));
-        holder.tvWorkDone.setText(String.valueOf(workDone.getAmount()).concat(" ").concat(unit));
+        holder.bind(dailyWorkdone);
+
+       /* holder.tvDate.setText(MyUtil.getStringDate(new Date(workDone.getDate())));
+        holder.tvWorkDone.setText(String.valueOf(workDone.getAmount()).concat(" ").concat(unit));*/
 
     }
 
-    public void setData(List<WorkDone> workDoneList, String unit){
-        this.workDoneList = workDoneList;
-        this.unit = unit;
+    public void addItem(DailyWorkdone dailyWorkdone){
+        dailyWorkdoneList.add(dailyWorkdone);
+
+        int pos = dailyWorkdoneList.indexOf(dailyWorkdone);
+        notifyItemInserted(pos);
+    }
+
+    public void clear(){
+        this.dailyWorkdoneList.clear();
         notifyDataSetChanged();
     }
 
+   /* public void setData(List<WorkDone> workDoneList, String unit){
+        this.workDoneList = workDoneList;
+        this.unit = unit;
+        notifyDataSetChanged();
+    }*/
+
     @Override
     public int getItemCount() {
-        return workDoneList.size();
+        return dailyWorkdoneList.size();
     }
 
     public class WorkDoneHolder extends RecyclerView.ViewHolder{
@@ -67,6 +82,12 @@ public class WorkDoneAdapter extends RecyclerView.Adapter<WorkDoneAdapter.WorkDo
 
             tvDate = itemView.findViewById(R.id.date);
             tvWorkDone = itemView.findViewById(R.id.work_done);
+        }
+
+
+        public void bind(DailyWorkdone dailyWorkdone){
+            tvDate.setText(dailyWorkdone.getDate());
+            tvWorkDone.setText(dailyWorkdone.getAmount()+"");
         }
     }
 }

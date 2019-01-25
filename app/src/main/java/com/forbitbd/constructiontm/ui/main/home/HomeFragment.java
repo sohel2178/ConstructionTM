@@ -226,18 +226,21 @@ public class HomeFragment extends AdFragment implements
 
     @Override
     public void showInterAd() {
-        counter++;
 
-        if(counter%2==0){
-            if(getmInterstitialAd().isLoaded()){
-                showAd();
-            }else {
-                getmInterstitialAd().loadAd(new AdRequest.Builder().build());
-                mPresenter.callCreateProjectActivity();
-            }
-        }else{
+        if(getmInterstitialAd().isLoaded()){
+            showAd();
+        }else {
+            getmInterstitialAd().loadAd(new AdRequest.Builder().build());
             mPresenter.callCreateProjectActivity();
         }
+
+        /*counter++;
+
+        if(counter%2==0){
+
+        }else{
+            mPresenter.callCreateProjectActivity();
+        }*/
 
 
     }

@@ -21,7 +21,7 @@
     <dimen name="chart_min_height">350dp</dimen>
     <dimen name="lock_size">36dp</dimen>
     <dimen name="sign_in_button_height">64dp</dimen>
-    <dimen name="task_icon_dim">42dp</dimen>
+    <dimen name="task_icon_dim">32dp</dimen>
     <dimen name="project_icon_size">36dp</dimen>
     <dimen name="l_icon_dim">48dp</dimen>
     <dimen name="nav_icon">30dp</dimen>

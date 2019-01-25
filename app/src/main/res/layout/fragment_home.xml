@@ -79,6 +79,7 @@
         android:id="@+id/materialup.viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.FloatingActionButton
@@ -87,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right|end"
         android:layout_margin="@dimen/large_padding"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="@color/colorAccent"
         app:elevation="@dimen/medium_padding"
         app:fabSize="normal"
         app:srcCompat="@drawable/fab_add" />

@@ -9,10 +9,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.forbitbd.constructiontm.R;
 import com.forbitbd.constructiontm.model.Task;
+import com.forbitbd.constructiontm.ui.gantt.GanttActivity;
 import com.forbitbd.constructiontm.ui.project.task.taskpager.TaskPagerFragment;
 import com.forbitbd.constructiontm.ui.taskAdd.AddTaskActivity;
 import com.forbitbd.constructiontm.ui.taskUpdate.UpdateTaskActivity;
@@ -24,6 +24,7 @@ import com.forbitbd.constructiontm.model.ProjectPermission;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -170,12 +171,6 @@ public class ProjectActivity extends PrebaseActivity implements ProjectContract.
 
 
 
-
-    @Override
-    public void showErrorToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
-
     @Override
     public void loadActivityFragment() {
     }
@@ -194,14 +189,9 @@ public class ProjectActivity extends PrebaseActivity implements ProjectContract.
 
     @Override
     public void updateSortedList(List<Task> taskList) {
-        //Add Task in Task List
         this.taskList =taskList;
         mPresenter.filterData(taskList,currentPos);
         mPresenter.calculateProgress(taskList);
-
-        /*//Update Adapter
-        TaskPagerFragment taskPagerFragment = (TaskPagerFragment) adapter.getItem(currentPos);
-        taskPagerFragment.addPositionTask(task,position);*/
     }
 
     @Override
@@ -210,6 +200,15 @@ public class ProjectActivity extends PrebaseActivity implements ProjectContract.
         intent.putExtra(Constant.PROJECT_ID,project.getId());
 
         startActivityForResult(intent,REQUEST_CODE);
+    }
+
+    @Override
+    public void startGanttChartActivity() {
+        Intent intent = new Intent(getApplicationContext(), GanttActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(Constant.DATA, (Serializable) taskList);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     @Override
@@ -238,6 +237,12 @@ public class ProjectActivity extends PrebaseActivity implements ProjectContract.
         taskList.set(position,task);
         mPresenter.filterData(taskList,currentPos);
         mPresenter.calculateProgress(taskList);
+        //unfoldItem(position);
+    }
+
+    private void unfoldItem(int position){
+        TaskPagerFragment taskPagerFragment = (TaskPagerFragment) adapter.getItem(currentPos);
+        taskPagerFragment.unfoldItem(position);
     }
 
     @Override
@@ -248,6 +253,7 @@ public class ProjectActivity extends PrebaseActivity implements ProjectContract.
                 break;
 
             case R.id.fab_gantt_chart:
+                mPresenter.startGanttChartActivity();
                 break;
         }
     }

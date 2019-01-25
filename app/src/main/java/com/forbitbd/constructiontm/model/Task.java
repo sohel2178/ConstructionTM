@@ -1,6 +1,9 @@
 package com.forbitbd.constructiontm.model;
 
+import com.forbitbd.constructiontm.utility.MyUtil;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by Sohel on 1/29/2018.
@@ -120,5 +123,24 @@ public class Task implements Serializable {
 
     public void setProject_id(String project_id) {
         this.project_id = project_id;
+    }
+
+    public int getRemainingDays(){
+        return MyUtil.getDuration(task_finished_date,new Date().getTime());
+    }
+
+    public int getState(){
+        Date date = new Date();
+        if(MyUtil.getEndingTime(getTask_finished_date())>date.getTime()
+                && getTask_volume_of_work_done()!=getTask_volume_of_works()){
+            return 1;
+        }else if(getTask_volume_of_work_done()==getTask_volume_of_works()){
+            return 2;
+        }else if(MyUtil.getEndingTime(getTask_finished_date())<date.getTime()
+                && getTask_volume_of_work_done()!=getTask_volume_of_works()){
+            return 3;
+        }else{
+            return 0;
+        }
     }
 }

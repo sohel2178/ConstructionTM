@@ -2,14 +2,14 @@
     <string name="app_name">Tasks Manager</string>
 
     <!--Original-->
-    <!-- <string name="ad_unit_id">ca-app-pub-5474497946967422/8916710227</string>
+     <string name="ad_unit_id">ca-app-pub-5474497946967422/8916710227</string>
     <string name="ad_app_id">ca-app-pub-5474497946967422~5203985489</string>
-    <string name="ad_unit_id_inters">ca-app-pub-5474497946967422/5139572152</string>-->
+    <string name="ad_unit_id_inters">ca-app-pub-5474497946967422/5139572152</string>
 
     <!--Test Add-->
-    <string name="ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <!--<string name="ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="ad_app_id">ca-app-pub-3940256099942544~3347511713</string>
-    <string name="ad_unit_id_inters">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="ad_unit_id_inters">ca-app-pub-3940256099942544/1033173712</string>-->
 
     <string name="facebook_app_id">751400055046983</string>
     <string name="fb_login_protocol_scheme">fb128892581247029</string>

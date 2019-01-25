@@ -13,20 +13,21 @@ import android.view.ViewGroup;
 
 
 import com.forbitbd.constructiontm.R;
+import com.forbitbd.constructiontm.model.DailyWorkdone;
 import com.forbitbd.constructiontm.model.WorkDone;
+import com.forbitbd.constructiontm.ui.taskDetail.BaseDetailFragment;
 
 import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WorkDoneTableFragment extends Fragment {
+public class WorkDoneTableFragment extends BaseDetailFragment implements WorkDoneTableContract.View {
 
     private RecyclerView rvWorkdone;
-
-
-
     private WorkDoneAdapter adapter;
+
+    private WorkdoneTablePresenter mPresenter;
 
 
     public WorkDoneTableFragment() {
@@ -36,6 +37,8 @@ public class WorkDoneTableFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mPresenter = new WorkdoneTablePresenter(this);
 
        /* List<WorkDone> workDoneList = (List<WorkDone>) getArguments().getSerializable(Constant.WORK_DONE_LIST);
         String unit = getArguments().getString(Constant.UNIT);*/
@@ -59,10 +62,18 @@ public class WorkDoneTableFragment extends Fragment {
         rvWorkdone.setLayoutManager(manager);
         rvWorkdone.addItemDecoration(new DividerItemDecoration(getContext(),manager.getOrientation()));
         rvWorkdone.setAdapter(adapter);
+
+        mPresenter.processData(getWorkdoneList());
     }
 
-    public void setData(List<WorkDone> workDoneList, String unit){
-        adapter.setData(workDoneList,unit);
+
+    @Override
+    public void addItem(DailyWorkdone dailyWorkdone) {
+        adapter.addItem(dailyWorkdone);
     }
 
+    @Override
+    public void clearAdpter() {
+        adapter.clear();
+    }
 }
